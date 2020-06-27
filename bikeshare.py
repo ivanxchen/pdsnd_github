@@ -40,9 +40,9 @@ def get_filters():
     while 1:
         select = input('Would you like to filter the data by month and/or day? Enter yes or no. Type "no" for no time filter.\n').lower()
         print()
-        if select=='yes' or select=='y':
+        if select=='yes':
             select=True
-        elif select=='no' or select=='n':
+        elif select=='no':
             select=False
         else:
             print("\nI'm sorry, you did not enter a valid selection. Let's try again.")
@@ -157,16 +157,13 @@ def station_stats(df):
     start_time = time.time()
 
     # TO DO: display most commonly used start station
-    popular_start = df['Start Station'].mode()[0]
-    print('\nMost popular start station:', popular_start)
+    print('\nMost popular start station: {}'.format(df['Start Station'].mode()[0]))
 
     # TO DO: display most commonly used end station
-    popular_end = df['End Station'].mode()[0]
-    print('\nMost popular end station:', popular_end)
+    print('\nMost popular end station: {}'.format(df['End Station'].mode()[0]))
 
     # TO DO: display most frequent combination of start station and end station trip
-    most_popular_trip = df['Start Station'].mode()[0] + ' to ' + df['End Station'].mode()[0]
-    print('\nMost popular trip from start to end:', most_popular_trip)
+    print('\nMost popular trip from start to end: {}'.format(df['Start Station'].mode()[0] + ' to ' + df['End Station'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -234,9 +231,9 @@ def display_data(df):
 
     display = input('Would you like to view individual trip data? Enter yes or no\n').lower()
     print()
-    if display=='yes' or display=='y':
+    if display=='yes':
         display=True
-    elif display=='no' or display=='n':
+    elif display=='no':
         display=False
     else:
         print("\nI'm sorry, I'm not sure if you wanted to see individual trip data or not. Let's try again.")
@@ -250,9 +247,9 @@ def display_data(df):
             end_loc += 5
             end_display = input('\nWould you like to view more individual trip data? Enter yes or no.\n').lower()
             print()
-            if end_display=='yes' or end_display=='y':
+            if end_display=='yes':
                 continue
-            elif end_display=='no' or end_display=='n':
+            elif end_display=='no':
                 break
             else:
                 print("\nI'm sorry, you didn't enter a valid response!")
@@ -271,7 +268,7 @@ def main():
         display_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n').lower()
-        if restart != 'yes' and restart != 'y':
+        if restart != 'yes':
             break
 
 if __name__ == "__main__":
